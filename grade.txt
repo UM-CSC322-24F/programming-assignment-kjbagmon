@@ -1,0 +1,261 @@
+https://github.com/UM-CSC322-24F/programming-assignment-kjbagmon.git
+commit 33912e6ff03c8db71c7855b7f5565a15ad8f8921
+Author: Bagmon, Kendall <kjbagmon@gmail.com>
+Date:   Mon Oct 28 17:54:37 2024 -0400
+
+    initial submission
+---------------------------------------------------------
+Fleet Management
+
+Grade : 17.5/20
+
+Welcome Message                 0.0/0.5
+Menu                            1.0/1.0
+Print Sorted                    1.5/1.5
+Add                             1.0/1.0
+Remove                          1.0/1.0
+Payment                         1.0/1.0
+Monthly                         0.0/1.0
+Exit Message                    0.5/0.5
+#defines                        0.5/0.5
+typedefs                        0.5/0.5
+Data Structure                  0.5/0.5
+qsort                           0.5/0.5
+Loads from CSV                  2.0/2.0
+Saves To CSV                    1.0/1.0
+Boat names (CI)                 0.5/0.5
+Remove/Payment missing boats    0.5/0.5
+Payment Too High                0.5/0.5
+Check Number of cmd arguments   0.0/0.5
+Test file open/close errors     0.0/0.5
+Test Malloc Errors              0.5/0.5
+Free all memory on Exit         0.5/0.5
+Functions and Parameters        1.0/1.0
+Identifier names                1.0/1.0
+Global Variables (bad)          1.0/1.0
+Formatting                      1.0/1.0
+Commenting                      1.0/1.0
+Anything else ugly              1.0/1.0
+
+Comments : 1. Great job on seperating your code into different files
+2. Monthly amount not implemented
+3. File name hard coded
+4. No Welcome Message
+
+---------------------------------------------------------Script started on 2024-11-04 15:59:56-05:00 [TERM="xterm-256color" TTY="/dev/pts/6" COLUMNS="174" LINES="18"]
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ ls
+[?2004l
+boat.c  BoatData.csv  boat.h  [0m[01;32mBoatManager[0m  fileio.c  grade1.txt  grade.txt  main.c  README.md
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ gcc bo[K[Kboat.h boat.c -o [K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[Kboat.h boat[K[K[K[Kfileio.c ma[K[Kboat.c main.c -o b[Kmain
+[?2004l
+[01m[Kfileio.c:[m[K In function ‘[01m[KprintBoatDetails[m[K’:
+[01m[Kfileio.c:25:22:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%s[m[K’ expects argument of type ‘[01m[Kchar *[m[K’, but argument 3 has type ‘[01m[Kint[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   25 |         printf("%s, [01;35m[K%s[m[K, %.2f, %.2f\n",
+      |                     [01;35m[K~^[m[K
+      |                      [01;35m[K|[m[K
+      |                      [01;35m[Kchar *[m[K
+      |                     [32m[K%d[m[K
+   26 |             boats[i]->name,
+   27 |             [32m[Kboats[i]->boats == SLIP ? boats[i]->extra.slipNumber : boats[i]->extra.bayLetter[m[K,
+      |             [32m[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+      |                                                                  [32m[K|[m[K
+      |                                                                  [32m[Kint[m[K
+[01m[Kfileio.c:25:34:[m[K [01;35m[Kwarning: [m[Kformat ‘[01m[K%f[m[K’ expects a matching ‘[01m[Kdouble[m[K’ argument [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wformat=-Wformat=]8;;[m[K]
+   25 |         printf("%s, %s, %.2f, [01;35m[K%.2f[m[K\n",
+      |                               [01;35m[K~~~^[m[K
+      |                                  [01;35m[K|[m[K
+      |                                  [01;35m[Kdouble[m[K
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ ./boat[K[K[K[Kmain
+[?2004l
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+Big Brother          20.0  Slip 27 Owes $1200.00
+Magic                38.0  Slip 0 Owes $0.00
+Moon Glow            30.0  Slip 13 Owes $500.00
+Osita                40.0  Land, Bay C Owes $1000.07
+Run About            18.0  Storage, Space 13 Owes $200.50
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+x
+Exiting the Boat Management System
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ rm BoatData.csv
+[?2004l
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ rm BoatData.csv[9P./main
+[?2004l
+Failed to open file: No such file or directory
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+x
+Exiting the Boat Management System
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ cat ../BoatData.csv >>[K BoatData.csv
+[?2004l
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ ./main
+[?2004l
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+Big Brother          20.0  Slip 27 Owes $1200.00
+Magic                38.0  Slip 0 Owes $0.00
+Moon Glow            30.0  Slip 13 Owes $500.00
+Osita                40.0  Land, Bay C Owes $1000.07
+Run About            18.0  Storage, Space 13 Owes $200.50
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+a
+Enter boat data (Name, Length, Type, Extra Info, Amount Owed): adad
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+Big Brother          20.0  Slip 27 Owes $1200.00
+Magic                38.0  Slip 0 Owes $0.00
+Moon Glow            30.0  Slip 13 Owes $500.00
+Osita                40.0  Land, Bay C Owes $1000.07
+Run About            18.0  Storage, Space 13 Owes $200.50
+adad                 0.0   Slip 0 Owes $0.00
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+a
+Enter boat data (Name, Length, Type, Extra Info, Amount Owed): Brooks,34,trailor,AAR666,99.00
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+Big Brother          20.0  Slip 27 Owes $1200.00
+Brooks               34.0  Slip 0 Owes $99.00
+Magic                38.0  Slip 0 Owes $0.00
+Moon Glow            30.0  Slip 13 Owes $500.00
+Osita                40.0  Land, Bay C Owes $1000.07
+Run About            18.0  Storage, Space 13 Owes $200.50
+adad                 0.0   Slip 0 Owes $0.00
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+m
+Invalid choice. Please try again.
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+p
+Enter the name of the boat for payment: adad
+Enter the payment amount: 232
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+Big Brother          20.0  Slip 27 Owes $1200.00
+Brooks               34.0  Slip 0 Owes $99.00
+Magic                38.0  Slip 0 Owes $0.00
+Moon Glow            30.0  Slip 13 Owes $500.00
+Osita                40.0  Land, Bay C Owes $1000.07
+Run About            18.0  Storage, Space 13 Owes $200.50
+adad                 0.0   Slip 0 Owes $0.00
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+p
+Enter the name of the boat for payment: Brooks
+Enter the payment amount: 20
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+Big Brother          20.0  Slip 27 Owes $1200.00
+Brooks               34.0  Slip 0 Owes $79.00
+Magic                38.0  Slip 0 Owes $0.00
+Moon Glow            30.0  Slip 13 Owes $500.00
+Osita                40.0  Land, Bay C Owes $1000.07
+Run About            18.0  Storage, Space 13 Owes $200.50
+adad                 0.0   Slip 0 Owes $0.00
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+x
+Exiting the Boat Management System
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ ./main
+[?2004l
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+r
+Enter the name of the boat to remove: adad
+Boat not found.
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+r
+Enter the name of the boat to remove: Brooks
+Boat not found.
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+Big Brother          20.0  Slip 27 Owes $1200.00
+Magic                38.0  Slip 0 Owes $0.00
+Moon Glow            30.0  Slip 13 Owes $500.00
+Osita                40.0  Land, Bay C Owes $1000.07
+Run About            18.0  Storage, Space 13 Owes $200.50
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+x
+Exiting the Boat Management System
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ valgrind ./boat[K[K[K[Kmain
+[?2004l
+==10231== Memcheck, a memory error detector
+==10231== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==10231== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==10231== Command: ./main
+==10231== 
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+i
+Big Brother          20.0  Slip 27 Owes $1200.00
+==10231== Conditional jump or move depends on uninitialised value(s)
+==10231==    at 0x109811: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+==10231== Conditional jump or move depends on uninitialised value(s)
+==10231==    at 0x10981A: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+==10231== Conditional jump or move depends on uninitialised value(s)
+==10231==    at 0x109823: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+==10231== Conditional jump or move depends on uninitialised value(s)
+==10231==    at 0x10982C: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+==10231== Conditional jump or move depends on uninitialised value(s)
+==10231==    at 0x109834: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+==10231== Conditional jump or move depends on uninitialised value(s)
+==10231==    at 0x48E8AD6: __vfprintf_internal (vfprintf-internal.c:1516)
+==10231==    by 0x48D279E: printf (printf.c:33)
+==10231==    by 0x109872: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+==10231== Use of uninitialised value of size 8
+==10231==    at 0x48CC2EB: _itoa_word (_itoa.c:177)
+==10231==    by 0x48E7ABD: __vfprintf_internal (vfprintf-internal.c:1516)
+==10231==    by 0x48D279E: printf (printf.c:33)
+==10231==    by 0x109872: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+==10231== Conditional jump or move depends on uninitialised value(s)
+==10231==    at 0x48CC2FC: _itoa_word (_itoa.c:177)
+==10231==    by 0x48E7ABD: __vfprintf_internal (vfprintf-internal.c:1516)
+==10231==    by 0x48D279E: printf (printf.c:33)
+==10231==    by 0x109872: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+==10231== Conditional jump or move depends on uninitialised value(s)
+==10231==    at 0x48E85C3: __vfprintf_internal (vfprintf-internal.c:1516)
+==10231==    by 0x48D279E: printf (printf.c:33)
+==10231==    by 0x109872: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+==10231== Conditional jump or move depends on uninitialised value(s)
+==10231==    at 0x48E7C05: __vfprintf_internal (vfprintf-internal.c:1516)
+==10231==    by 0x48D279E: printf (printf.c:33)
+==10231==    by 0x109872: printBoats (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231==    by 0x109C3B: main (in /home/auxport/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon/main)
+==10231== 
+Magic                38.0  Slip 0 Owes $0.00
+Moon Glow            30.0  Slip 13 Owes $500.00
+Osita                40.0  Land, Bay C Owes $1000.07
+Run About            18.0  Storage, Space 13 Owes $200.50
+(I)nventory, (A)dd, (R)emove, (P)ayment, e(X)it:
+x
+Exiting the Boat Management System
+==10231== 
+==10231== HEAP SUMMARY:
+==10231==     in use at exit: 0 bytes in 0 blocks
+==10231==   total heap usage: 9 allocs, 9 frees, 7,416 bytes allocated
+==10231== 
+==10231== All heap blocks were freed -- no leaks are possible
+==10231== 
+==10231== Use --track-origins=yes to see where uninitialised values come from
+==10231== For lists of detected and suppressed errors, rerun with: -s
+==10231== ERROR SUMMARY: 10 errors from 10 contexts (suppressed: 0 from 0)
+[?2004h]0;auxport@auxport: ~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[01;32mauxport@auxport[00m:[01;34m~/Documents/CSC/CSC322/programming-assignment-submissions/programming-assignment-kjbagmon[00m$ exit
+[?2004l
+exit
+
+Script done on 2024-11-04 16:02:53-05:00 [COMMAND_EXIT_CODE="0"]
